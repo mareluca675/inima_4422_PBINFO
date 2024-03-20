@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int vec[100001], n;
+
+int main()
+{
+    ifstream fin("inima.in");
+    ofstream fout("inima.out");
+
+    ios_base::sync_with_stdio(false);
+    fin.tie(NULL);
+    fout.tie(NULL);
+
+    fin >> n;
+    for(int i = 1; i <= n; i ++){
+        fin >> vec[i];
+    }
+
+    int arie, arieMaxima = 0;
+    for(int i = 1, j = n; i < j;){
+        arie = min(vec[i], vec[j]) * (j - i);
+        arieMaxima = max(arie, arieMaxima);
+
+        if(vec[i] < vec[j]){
+            ++ i;
+        }
+        else{
+            -- j;
+        }
+    }
+
+    fout << arieMaxima;
+    return 0;
+}
